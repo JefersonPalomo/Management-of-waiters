@@ -1,0 +1,73 @@
+h1 {
+	color: rgb(255, 0, 255);
+}
+
+.orange {
+	color: rgb(255, 128, 0);
+	font-weight: 900;
+}
+
+.shape1, .shape2, .shape3, .shape4, .shape5, .shape6 {
+	position: absolute;
+    transform: translate(-50%,-50%);
+    width: 7vw;
+    height: 15vh;
+    border-radius: 50%;
+}
+
+.shape1{
+    background: linear-gradient(
+        rgb(255, 0, 255),
+        rgb(128, 0, 255)
+    );
+    left: 75%;
+    top: 20%;
+}
+.shape2{
+    background: linear-gradient(
+        to right,
+        #ff512f,
+        #f09819
+    );
+    left: 25%;
+    top: 50%;
+}
+
+.shape3{
+    background: linear-gradient(
+        rgb(255, 0, 255),
+        rgb(128, 0, 255)
+    );
+    left: 70%;
+    top: 50%;
+}
+
+.shape4{
+    background: linear-gradient(
+        to right,
+        #ff512f,
+        #f09819
+    );
+    left: 15%;
+    top: 20%;
+}
+
+.shape5{
+    background: linear-gradient(
+        rgb(255, 0, 255),
+        rgb(128, 0, 255)
+    );
+    left: 25%;
+    top: 20%;
+}
+.shape6{
+    background: linear-gradient(
+        to right,
+        #ff512f,
+        #f09819
+    );
+    left: 35%;
+    top: 80%;
+}
+
+

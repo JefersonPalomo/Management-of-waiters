@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Validation</title>
+<link rel="stylesheet" href="/css/style1.css">
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="select-none bg-black flex grid grid-cols-1 text-center justify-center p-10 text-white">
+	<h1 class="font-semibold block text-4xl mb-5">Are you sure about delete this table?</h1>
+	<div class="shape3"></div>
+	<div class="shape4"></div>
+	<div>
+	<a th:href="@{/tables/{id}/delete/confirm(id=${mesa.id})}" class="h_orange text-2xl mr-3">Yes</a>
+	<a th:href="@{/home}" class="text-2xl h_orange">No</a>
+	</div>
+</body>
+</html>

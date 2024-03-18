@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="/css/style1.css">
+	<title>Project Manager</title>
+</head>
+
+<body class="select-none bg-black h-screen w-screen text-white font-medium grid lg:grid-cols-2 sm:grid-cols-1 p-20">
+	<div class="shape1"></div>
+	<div class="shape2"></div>
+	<div class="flex justify-center items-center mb-8">
+		<form class="p-8 pb-0 border border-white bg-gray-300 bg-opacity-30 rounded-3xl" th:action="@{/registration}"
+			method="post" th:object="${user}">
+			<h1 class="orange text-4xl mb-10 text-center font-normal">New Waitstaff!</h1>
+			<table>
+				<tr>
+					<td><label class="mr-10">Name:</label></td>
+					<td><input class="text-black" type="text" th:field="*{name}" autocomplete="off" required minlength="3" /><span
+							th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span></td>
+				</tr>
+				<tr>
+					<td><label class="mr-10">Email:</label></td>
+					<td>
+						<input class="text-black" type="email" th:field="*{email}" required />
+						<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+						<span th:if="${correoDup}" th:text="${correoDup}"></span>
+					</td>
+				</tr>
+				<tr>
+					<td><label class="mr-10">Password:</label></td>
+					<td>
+						<input class="text-black" type="password" th:field="*{password}" autocomplete="off" required minlength="6" />
+						<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+					</td>
+				</tr>
+				<tr>
+					<td><label class="mr-10">Confirm PW:</label></td>
+					<td><input class="text-black" type="password" th:field="*{passwordConfirmation}" autocomplete="off" required minlength="6" /></td>
+					<p class="my-3" th:if="${#fields.hasErrors('passwordConfirmation')}" th:errors="*{passwordConfirmation}"></p>
+				</tr>
+			</table>
+			<div class="flex justify-center">
+				<input class="font-bold py-2 px-3 my-5 rounded bg-blue-700" type="submit" value="Register" />
+			</div>
+		</form>
+	</div>
+	<div class="flex justify-center items-center mb-8">
+		<form class="p-8 pb-0 border border-white bg-gray-300 bg-opacity-30 rounded-3xl" method="post" th:action="@{/login}">
+			<h1 class="orange text-4xl mb-8 text-center font-normal">Login</h1>
+			<p class="my-2" th:if="${sessionInv}" th:text="${sessionInv}"></p>
+			<p class="my-2" th:if="${errorL}" th:text="${errorL}"></p>
+			<table>
+				<tr>
+					<td><label class="mr-10" for="email">Email:</label></td>
+					<td><input class="text-black" type="text" id="email" name="email" required /></td>
+				</tr>
+				<tr>
+					<td><label class="mr-10" for="password">Password:</label></td>
+					<td><input class="text-black" type="password" id="password" name="password" autocomplete="off" required
+							minlength="6" /></td>
+				</tr>
+			</table>
+			<div class="flex justify-center">
+				<input class="font-bold py-2 px-3 rounded my-5 bg-blue-700 button" type="submit" value="Login" />
+			</div>
+		</form>
+	</div>
+</body>
+
+</html>

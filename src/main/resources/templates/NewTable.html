@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>New Table</title>
+<link rel="stylesheet" href="/css/style1.css">
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="select-none bg-black flex grid grid-cols-1 text-center justify-center p-10 text-white">
+	<div class="shape3"></div>
+	<div class="shape4"></div>
+	<h1 class="font-semibold block text-4xl mb-5">New Table!</h1>
+	<a class="absolute orange underline top-12 right-10" href="/logout">Logout</a>
+	<form action="/tables/new" method="post" th:object="${mesa}">
+		<table class="flex justify-center my-5">
+			<tr>
+				<td class="flex justify-start"><label for="title">Guest Name</label></td>
+				<td class="flex justify-start"><input class="pl-2 text-black" type="text" name="guestName" autocomplete="off" minlength="3" required >
+				<span th:if="${#fields.hasErrors('guestName')}" th:errors="*{guestName}"></span></td>
+			</tr>
+			<tr>
+				<td class="flex justify-start"><label for="genre">Number of Guests </label></td>
+				<td class="flex justify-start"><input class="pl-2  text-black" type="number" autocomplete="off" name="guests" required> 
+				<span th:if="${#fields.hasErrors('guests')}" th:errors="*{guests}"></span></td>
+			</tr>
+			<tr>
+				<td class="flex justify-start"><label for="lyrics">Notes (Optional)</label></td>
+				<td class="flex justify-start"><textarea class="p-2 text-black" type="text" autocomplete="off" name="notes"></textarea>
+				<span th:if="${#fields.hasErrors('notes')}" th:errors="*{notes}"></span></td>
+			</tr>
+		</table>
+		<a class="text-blue-500 h_orange mr-2" th:href="@{/home}">Cancel</a>
+		<span>|</span>
+		<button class="ml-2 font-bold py-2 px-3 my-5 rounded bg-blue-700" type="submit">
+			Submit
+		</button>
+	</form>
+</body>
+</html>

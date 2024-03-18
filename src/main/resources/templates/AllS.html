@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Project Manager Dashboard</title>
+	<link rel="stylesheet" href="/css/style1.css">
+	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="select-none bg-black flex grid grid-cols-1 text-center justify-center p-10 text-white">
+	<h1 class="font-semibold block text-4xl" th:text="'Welcome back, ' + ${user.name}"></h1>
+	<a class="absolute orange underline top-12 right-10" href="/logout">Logout</a>
+	<div class="shape3"></div>
+	<div class="shape4"></div>
+	<div class="my-5">
+		<h3 class="text-2xl">Your Tables</h3>
+		<p th:if="${credentials}" th:text="${credentials}"></p>
+		<p th:if="${withoutUser}" th:text="${withoutUser}"></p>
+		<section th:if="${mesasPropias}" class="flex justify-center my-8">
+			<table class="bg-gray-300 bg-opacity-30 rounded-2xl">
+				<tr>
+					<th class="p-3 border-b border-r" >Ghest Name</th>
+					<th class="p-3 border-b border-r" ># Guests</th>
+					<th class="p-3 border-b border-r" >Arrived at</th>
+					<th class="p-3 border-b" >Actions</th>
+				</tr>
+				<tr th:each="mesa : ${mesasPropias}">
+					<td class="p-3" th:text="${mesa.guestName}"></td>
+					<td class="p-3" th:text="${mesa.guests}"></td>
+					<td class="p-3" th:text="${mesa.createdAt}"></td>
+					<td class="p-3">
+						<a class="text-blue-500 hover:text-red-500" th:href="@{/tables/{id}/delete(id=${mesa.id})}" th:text="'Finished'"></a>
+						<span>|</span>
+						<a class="text-blue-500 hover:text-white" th:href="@{/tables/{id}/edit(id=${mesa.id})}" th:text="'Edit'"></a>
+						<span>|</span>
+						<a class="text-blue-500 h_orange" th:href="@{/tables/{id}/give(id=${mesa.id})}" th:text="'Give Up Table'"></a>
+					</td>
+				</tr>
+			</table>
+		</section>
+		<div class="my-3" th:unless="${mesasPropias}">
+			You still don't have any tables under your responsibility.
+		</div>
+		<a th:href="@{/tables}" th:text="'See Other Tables'" class="text-medium orange"></a>
+		<form action="/tables/new" class="mt-2" method="get">
+			<button type="submit">+ New Table</button>
+		</form>
+	</div>
+</body>
+
+</html>
